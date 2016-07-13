@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.twistedequations.rxsavestate.RxStateActivity">
+
+    <Button
+        android:id="@+id/rx_state_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save State"/>
+
+    <EditText
+        android:id="@+id/rx_state_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="State to save"/>
+
+</LinearLayout>

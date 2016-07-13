@@ -1,0 +1,46 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.0"
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+        consumerProguardFiles 'proguard-rules.pro'
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        test.java.srcDirs += 'src/test/kotlin'
+        androidTest.java.srcDirs += 'src/androidTest/kotlin'
+    }
+}
+
+dependencies {
+    compile group: 'com.android.support', name: 'support-annotations', version: '24.0.0'
+    compile group: 'io.reactivex', name: 'rxjava', version: '1.1.6'
+
+    testCompile group: 'org.jetbrains.kotlin', name :'kotlin-stdlib', version: "$kotlin_version"
+    testCompile group: 'com.google.truth', name: 'truth', version: '0.28'
+    testCompile group: 'org.mockito', name :'mockito-core', version: '1.10.19'
+}
+
+apply from: "../maven.gradle"
+install {
+    repositories.mavenInstaller {
+        pom.project {
+            artifactId 'rx-savestate'
+        }
+    }
+}

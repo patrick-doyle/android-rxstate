@@ -1,0 +1,32 @@
+apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.0"
+    defaultConfig {
+        applicationId "com.twistedequations.rxintent"
+        minSdkVersion 19
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile project(':rx-savestate')
+    compile 'com.twistedequations.rx:rx-intent:1.0.0@aar'
+    compile 'com.jakewharton.rxbinding:rxbinding:0.4.0'
+    compile 'com.jakewharton:butterknife:8.0.1'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    apt 'com.jakewharton:butterknife-compiler:8.0.1'
+    compile 'com.android.support:appcompat-v7:24.0.0'
+    testCompile 'junit:junit:4.12'
+}

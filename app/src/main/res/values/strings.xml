@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">RxIntent</string>
+    <string name="touch_fingerprint_sensor">Touch fingerprint sensor</string>
+</resources>

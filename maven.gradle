@@ -1,0 +1,77 @@
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
+
+group = 'com.twistedequations.rx'
+version = project.property('maven.version')
+
+install {
+    repositories.mavenInstaller {
+        pom.project {
+            name 'Android Rx SaveState'
+            description 'Rx State helper library for android to make a saved state of an activity updatable at any point'
+            url 'https://github.com/TwistedEquations/android-savestate'
+            inceptionYear '2016'
+
+            packaging 'aar'
+            groupId 'com.twistedequations.rx'
+            version = project.property('maven.version')
+
+            licenses {
+                license {
+                    name 'The Apache Software License, Version 2.0'
+                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    distribution 'repo'
+                }
+            }
+            scm {
+                connection 'https://github.com/TwistedEquations/android-savestate.git'
+                url 'https://github.com/TwistedEquations/android-savestate'
+            }
+            developers {
+                developer {
+                    name 'Patrick Doyle'
+                }
+            }
+        }
+    }
+}
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    source = fileTree("${project.rootDir}/Libraries")
+    include( "**/*.java" )
+    exclude "**/build/**","**/tests/**", "**/org/apache/http/**", "**/org.apache.http/**"
+    classpath += project.files(android.getBootClasspath())
+    failOnError false
+    options.links("http://docs.oracle.com/javase/7/docs/api/");
+    options.links("http://d.android.com/reference/");
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+bintray {
+    user = project.property('bintray.user')
+    key = project.property('bintray.apikey')
+
+    configurations = ['archives']
+    pkg {
+        repo = 'maven'
+        name = 'rx-savestate'
+        userOrg = user
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/TwistedEquations/android-savestate.git'
+        publish = true
+    }
+}
