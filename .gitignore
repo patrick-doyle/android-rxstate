@@ -66,4 +66,3 @@ bin/
 tmp/
 local.properties
 .settings/
-/gradle.properties

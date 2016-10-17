@@ -12,12 +12,13 @@ Add `jcenter()` to the projects repositories build.gradle
 ```
 In your module build.gradle file add the dependency
 
+Current Version is in the gradle.properties file [Here](gradle.properties) 
 ```groovy
     dependencies {
-        compile "com.twistedequations.rx:rx-savestate:1.1.0"
+        compile "com.twistedequations.rx:rx-savestate:{{current version}}"
     }
 ```
-If its giving an error about not finding a jar file use `com.twistedequations.rx:rx-savestate:1.1.0@aar` instead
+If its giving an error about not finding a jar file use `com.twistedequations.rx:rx-savestate:{{current version}}@aar` instead
 
 ## Usage
 
