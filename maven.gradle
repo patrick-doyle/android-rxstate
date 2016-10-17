@@ -1,8 +1,12 @@
 apply plugin: 'com.jfrog.bintray'
 apply plugin: 'com.github.dcendents.android-maven'
 
+def String propertyOrDefault(String key, String defaultValue) {
+    project.hasProperty(key) ? project.property(key) : defaultValue
+}
+
 group = 'com.twistedequations.rx'
-version = project.property('maven.version')
+version = propertyOrDefault('maven.version', "-1")
 
 install {
     repositories.mavenInstaller {
@@ -14,7 +18,7 @@ install {
 
             packaging 'aar'
             groupId 'com.twistedequations.rx'
-            version = project.property('maven.version')
+            version = propertyOrDefault('maven.version', "-1")
 
             licenses {
                 license {
@@ -62,8 +66,8 @@ artifacts {
 }
 
 bintray {
-    user = project.property('bintray.user')
-    key = project.property('bintray.apikey')
+    user = propertyOrDefault('bintray.user', "")
+    key = propertyOrDefault('bintray.apikey', "")
 
     configurations = ['archives']
     pkg {

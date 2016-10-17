@@ -31,12 +31,8 @@ public class RxSaveStateFragment extends Fragment {
         }
     }
 
-    public Observable<Bundle> getPrevState() {
-        if(prevState != null) {
-            return Observable.just(prevState);
-        } else {
-            return Observable.empty();
-        }
+    public Bundle getPrevState() {
+        return prevState;
     }
 
     public void updateState(Action1<Bundle> updateStateAction) {
