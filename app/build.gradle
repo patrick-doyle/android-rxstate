@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 apply plugin: 'android-apt'
 
 android {
@@ -18,6 +19,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
 }
 
 dependencies {
@@ -28,5 +32,11 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.5.2'
     apt 'com.jakewharton:butterknife-compiler:8.0.1'
     compile 'com.android.support:appcompat-v7:24.0.0'
+    compile 'org.jetbrains.anko:anko-sdk19:0.9'
+    compile 'org.jetbrains.anko:anko-appcompat-v7:0.9'
     testCompile 'junit:junit:4.12'
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }

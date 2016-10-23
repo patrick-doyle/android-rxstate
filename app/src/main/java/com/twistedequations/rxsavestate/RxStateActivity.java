@@ -3,6 +3,7 @@ package com.twistedequations.rxsavestate;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -11,6 +12,8 @@ import android.widget.Toast;
 import com.jakewharton.rxbinding.view.RxView;
 import com.twistedequations.rxsavestate.sample.R;
 import com.twistedequations.rxstate.RxSaveState;
+
+import org.jetbrains.anko.AnkoContextImpl;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,7 +39,11 @@ public class RxStateActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+        View view = findViewById(android.R.id.content);
+        View layout = new RxStateActivityUI().createView(new AnkoContextImpl<>(this, view, false));
+        setContentView(layout);
+
         ButterKnife.bind(this);
 
         compositeSubscription.add(getSavedState());
