@@ -1,9 +1,9 @@
-package com.twistedequations.rxstate.internal;
+package com.twistedequations.rx2state.internal;
 
 import android.app.Fragment;
 import android.os.Bundle;
 
-import com.twistedequations.rxstate.BundleAction;
+import com.twistedequations.rx2state.BundleAction;
 
 public class RxSaveStateFragment extends Fragment {
 

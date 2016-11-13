@@ -11,13 +11,13 @@ import android.widget.Toast;
 
 import com.jakewharton.rxbinding.view.RxView;
 import com.twistedequations.rxsavestate.sample.R;
+import com.twistedequations.rxstate.BundleAction;
 import com.twistedequations.rxstate.RxSaveState;
 
 import org.jetbrains.anko.AnkoContextImpl;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import rx.Observable;
 import rx.Subscription;
 import rx.functions.Action0;
 import rx.functions.Action1;
@@ -67,7 +67,7 @@ public class RxStateActivity extends AppCompatActivity {
                 @Override
                 public void call(final CharSequence charSequence) {
                     RxSaveState.updateSaveState(RxStateActivity.this,
-                        new Action1<Bundle>() {
+                        new BundleAction() {
                             @Override
                             public void call(Bundle bundle) {
                                 bundle.putCharSequence(STATE_KEY_TEXT, charSequence);

@@ -57,7 +57,7 @@ will overwrite the previous one for a given key
         @Override
         public void call(final CharSequence charSequence) {
             RxSaveState.updateSaveState(RxStateActivity.this,
-                    new Action1<Bundle>() {
+                    new BundleAction() {
                         @Override
                         public void call(Bundle bundle) {
                             bundle.putCharSequence(STATE_KEY_TEXT, charSequence);
@@ -102,4 +102,13 @@ restore state, disk cache and network loading
                      view.setData(data);
                  }
             }
+```
+
+## Rx2SaveState
+
+Support has been added for rxjava2. To use RxJava2 import the dependency
+```groovy
+    dependencies {
+        compile "com.twistedequations.rx2:rx2-savestate:{{current version}}"
+    }
 ```

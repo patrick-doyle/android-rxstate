@@ -1,1 +1,1 @@
-include ':app', ':rx-savestate'
+include ':app', ':rx-savestate', ':rx2-savestate'

@@ -1,4 +1,4 @@
-package com.twistedequations.rxstate;
+package com.twistedequations.rx2state;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -7,31 +7,31 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import com.twistedequations.rxstate.internal.PreConditions;
-import com.twistedequations.rxstate.internal.RxSaveStateFragment;
 
-import rx.Observable;
-import rx.functions.Action1;
+import com.twistedequations.rx2state.internal.PreConditions;
+import com.twistedequations.rx2state.internal.RxSaveStateFragment;
+
+import io.reactivex.Maybe;
 
 public class RxSaveState {
 
-    private static final String FRAGMENT_TAG = "RxSaveStateFragment";
+    private static final String FRAGMENT_TAG = "Rx2SaveStateFragment";
 
     private RxSaveState() {
     }
 
     /**
-     * Gets the current state as an observable. The Observable will emit a single bundle if there is a previous state
+     * Gets the current state as a Maybe. The Maybe will emit a single bundle if there is a previous state
      * or if the state is missing it will emit no events and call the onComplete event
      */
     @NonNull
-    public static Observable<Bundle> getSavedState(@NonNull Activity activity) {
+    public static Maybe<Bundle> getSavedState(@NonNull Activity activity) {
         PreConditions.throwIfNotOnMainThread();
         Bundle prevState = getSavedStateDirect(activity);
         if(prevState != null) {
-            return Observable.just(prevState);
+            return Maybe.just(prevState);
         } else {
-            return Observable.empty();
+            return Maybe.empty();
         }
     }
 

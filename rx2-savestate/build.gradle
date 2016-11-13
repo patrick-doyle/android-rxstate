@@ -28,7 +28,7 @@ android {
 
 dependencies {
     compile group: 'com.android.support', name: 'support-annotations', version: '25.0.0'
-    compile group: 'io.reactivex', name: 'rxjava', version: '1.1.6'
+    compile group: 'io.reactivex.rxjava2', name: 'rxjava', version: '2.0.1'
 
     testCompile group: 'org.jetbrains.kotlin', name :'kotlin-stdlib', version: "$kotlin_version"
     testCompile group: 'com.google.truth', name: 'truth', version: '0.28'
@@ -39,7 +39,7 @@ apply from: "maven.gradle"
 install {
     repositories.mavenInstaller {
         pom.project {
-            artifactId 'rx-savestate'
+            artifactId 'rx2-savestate'
         }
     }
 }
