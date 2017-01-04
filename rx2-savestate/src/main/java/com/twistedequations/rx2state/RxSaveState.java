@@ -42,7 +42,7 @@ public class RxSaveState {
     @Nullable
     public static Bundle getSavedStateDirect(@NonNull Activity activity) {
         PreConditions.throwIfNotOnMainThread();
-        return getFragment(activity).getPrevState();
+        return getFragment(activity).getState();
     }
 
     /**
