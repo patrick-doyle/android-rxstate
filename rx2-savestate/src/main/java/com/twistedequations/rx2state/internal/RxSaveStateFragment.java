@@ -18,7 +18,13 @@ public class RxSaveStateFragment extends Fragment {
     }
 
     public Bundle getState() {
-        return state;
+        if (state.isEmpty()) {
+            //if the state in empty then return a null value,
+            // this matches the way the bundle passed to onCreate
+            return null;
+        } else {
+            return state;
+        }
     }
 
     public void updateState(BundleAction updateStateAction) {
